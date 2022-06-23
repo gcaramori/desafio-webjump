@@ -1,0 +1,15 @@
+{
+    "name": "webjump/desafio",
+    "autoload": {
+        "psr-4": {
+            "Webjump\\Desafio\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Guilherme Caramori",
+            "email": "gcaramori16@gmail.com"
+        }
+    ],
+    "require": {}
+}
