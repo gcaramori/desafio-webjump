@@ -11,12 +11,20 @@ class ComposerStaticInitd041de8d02d38cec44c14de7058fb16e
         array (
             'Webjump\\Desafio\\' => 16,
         ),
+        'P' => 
+        array (
+            'Pecee\\' => 6,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Webjump\\Desafio\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Pecee\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pecee/simple-router/src/Pecee',
         ),
     );
 
