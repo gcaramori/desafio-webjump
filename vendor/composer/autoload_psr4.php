@@ -7,5 +7,15 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Webjump\\Desafio\\' => array($baseDir . '/src'),
+<<<<<<< HEAD
     'Pecee\\' => array($vendorDir . '/pecee/simple-router/src/Pecee'),
+=======
+    'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
+    'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
+    'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
+    'Pecee\\' => array($vendorDir . '/pecee/simple-router/src/Pecee'),
+    'GrahamCampbell\\ResultType\\' => array($vendorDir . '/graham-campbell/result-type/src'),
+    'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
+>>>>>>> f1c9adca364b417b946dce4d63c3b23530311d63
 );
