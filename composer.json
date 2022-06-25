@@ -11,5 +11,12 @@
             "email": "gcaramori16@gmail.com"
         }
     ],
-    "require": {}
+    "scripts": {
+        "start" : [
+            "php -S localhost:8000 -t src/public"
+        ]
+    },
+    "require": {
+        "pecee/simple-router": "4.3.7.2"
+    }
 }
