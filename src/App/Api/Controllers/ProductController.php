@@ -20,9 +20,10 @@
                 ]);     
 
                 $product = new \Entities\Product($formData['sku'], $formData['name'], $formData['price'], $formData['description'], $formData['quantity']);
-                $this->productManager->add($product);
+                $result = $this->productManager->add($product);
                 
-                print_r(response());    
+                if($result === true) response()->redirect('/products');
+                else return 'ERRO AO INSERIR';
             }
         }
 

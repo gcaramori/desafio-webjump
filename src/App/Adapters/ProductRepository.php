@@ -12,7 +12,7 @@
             $this->db = $this->db->connect();
         } 
 
-        public function add(Product $product):void {
+        public function add(Product $product):bool {
             $query = 'INSERT INTO products (sku, name, price, description, quantity) VALUES (:sku, :name, :price, :description, :quantity)';
             $stmt = $this->db->prepare($query);
 
@@ -22,7 +22,7 @@
             $stmt->bindValue(':description', $product->getDescription());
             $stmt->bindValue(':quantity', $product->getQuantity());
             
-            $stmt->execute();
+            return $stmt->execute();
         }
 
         public function find(string $sku):Product {
