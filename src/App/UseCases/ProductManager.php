@@ -10,12 +10,12 @@
             $this->productRepository = new \Adapters\ProductRepository;
         }
 
-        public function add(Product $product):void {
-            $this->productRepository->add($product);
+        public function add(Product $product) {
+            return $this->productRepository->add($product);
         }
         
-        public function find(string $sku):Product {
-            $this->productRepository->find($sku);
+        public function find(string $sku) {
+            return $this->productRepository->find($sku);
         }
     }
 ?>

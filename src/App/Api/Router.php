@@ -24,7 +24,7 @@
 
     //API
     SimpleRouter::post('/products/add', [ProductController::class, 'add'])->setName('add');
-    SimpleRouter::post('/products/find', [ProductController::class, 'find'])->setName('find');
+    SimpleRouter::get('/products/find/{id}', [ProductController::class, 'find'])->setName('find');
 
     SimpleRouter::start();
 ?>

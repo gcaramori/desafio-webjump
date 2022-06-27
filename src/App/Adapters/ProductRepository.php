@@ -12,27 +12,33 @@
             $this->db = $this->db->connect();
         } 
 
-        public function add(Product $product):bool {
-            $query = 'INSERT INTO products (sku, name, price, description, quantity) VALUES (:sku, :name, :price, :description, :quantity)';
-            $stmt = $this->db->prepare($query);
+        public function add(Product $product) {
+            try {
+                $query = 'INSERT INTO products (sku, name, price, description, quantity) VALUES (:sku, :name, :price, :description, :quantity)';
+                $stmt = $this->db->prepare($query);
 
-            $stmt->bindValue(':sku', $product->getSku());
-            $stmt->bindValue(':name', $product->getName());
-            $stmt->bindValue(':price', $product->getPrice());
-            $stmt->bindValue(':description', $product->getDescription());
-            $stmt->bindValue(':quantity', $product->getQuantity());
-            
-            return $stmt->execute();
+                $stmt->bindValue(':sku', $product->getSku());
+                $stmt->bindValue(':name', $product->getName());
+                $stmt->bindValue(':price', $product->getPrice());
+                $stmt->bindValue(':description', $product->getDescription());
+                $stmt->bindValue(':quantity', $product->getQuantity());
+                
+                return $stmt->execute();
+            }
+            catch(Exception $e) {
+                return $e;
+            }
         }
 
-        public function find(string $sku):Product {
-            $query = 'SELECT sku, name, price, description, quantity FROM products';
-            $stmt = $this->conn->prepare($query);
+        public function find(string $sku) {
+            $query = 'SELECT sku, name, price, description, quantity FROM products WHERE sku=:sku';
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':sku', $sku);
             $stmt->execute();
             
-            foreach($stmt as $item) {
-                return new Product($item['sku'], $item['name'], $item['price'], $item['description'], $item['quantity']);
-            }
+            $product = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+            return new Product($product['sku'], $product['name'], $product['price'], $product['description'], $product['quantity']);
         }
     }
 ?>
