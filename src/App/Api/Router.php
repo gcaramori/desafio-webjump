@@ -1,12 +1,12 @@
-<?php 
-    namespace Api;
-
+<?php
     use Pecee\SimpleRouter\SimpleRouter;
-    use Api\Controllers\ProductController;
-    use Api\Controllers\CategoryController;
+    use Controllers\ProductController;
+    use Controllers\CategoryController;
+
+    require_once 'helpers.php';
 
     //Render Routes
-    SimpleRouter::get('/', function() {
+    SimpleRouter::get('/', function() { 
         include_once __DIR__.'/../../public/views/dashboard.php';
     });
     SimpleRouter::get('/products', function() {
@@ -23,11 +23,8 @@
     });
 
     //API
-    SimpleRouter::post('/products/add', [ProductController::class, 'add']);
-    SimpleRouter::post('/products/find', [ProductController::class, 'find']);
-
-    SimpleRouter::post('/categories/add', [CategoryController::class, 'add']);
-    SimpleRouter::post('/categories/find', [CategoryController::class, 'find']);
+    SimpleRouter::post('/products/add', [ProductController::class, 'add'])->setName('add');
+    SimpleRouter::post('/products/find', [ProductController::class, 'find'])->setName('find');
 
     SimpleRouter::start();
 ?>

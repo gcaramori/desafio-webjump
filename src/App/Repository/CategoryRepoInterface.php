@@ -1,7 +1,7 @@
 <?php 
-    namespace App\Repository;
+    namespace Repository;
 
-    use App\Entities\Category;
+    use \Entities\Category;
 
     interface CategoryRepoInterface {
         public function add(Category $category):void;

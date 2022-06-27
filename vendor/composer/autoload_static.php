@@ -13,21 +13,19 @@ class ComposerStaticInitd041de8d02d38cec44c14de7058fb16e
     );
 
     public static $prefixLengthsPsr4 = array (
-        'W' => 
+        'U' => 
         array (
-            'Webjump\\Desafio\\' => 16,
+            'UseCases\\' => 9,
         ),
-<<<<<<< HEAD
-        'P' => 
-        array (
-            'Pecee\\' => 6,
-        ),
-=======
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
+        ),
+        'R' => 
+        array (
+            'Repository\\' => 11,
         ),
         'P' => 
         array (
@@ -38,20 +36,30 @@ class ComposerStaticInitd041de8d02d38cec44c14de7058fb16e
         array (
             'GrahamCampbell\\ResultType\\' => 26,
         ),
+        'E' => 
+        array (
+            'Entities\\' => 9,
+        ),
         'D' => 
         array (
             'Dotenv\\' => 7,
+            'Dependencies\\' => 13,
         ),
->>>>>>> f1c9adca364b417b946dce4d63c3b23530311d63
+        'C' => 
+        array (
+            'Controllers\\' => 12,
+        ),
+        'A' => 
+        array (
+            'Adapters\\' => 9,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Webjump\\Desafio\\' => 
+        'UseCases\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src',
+            0 => __DIR__ . '/../..' . '/src/App/UseCases',
         ),
-<<<<<<< HEAD
-=======
         'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
@@ -64,26 +72,42 @@ class ComposerStaticInitd041de8d02d38cec44c14de7058fb16e
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'Repository\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/App/Repository',
+        ),
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
->>>>>>> f1c9adca364b417b946dce4d63c3b23530311d63
         'Pecee\\' => 
         array (
             0 => __DIR__ . '/..' . '/pecee/simple-router/src/Pecee',
         ),
-<<<<<<< HEAD
-=======
         'GrahamCampbell\\ResultType\\' => 
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
+        ),
+        'Entities\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/App/Entities',
         ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
->>>>>>> f1c9adca364b417b946dce4d63c3b23530311d63
+        'Dependencies\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/App/Dependencies',
+        ),
+        'Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/App/Api/Controllers',
+        ),
+        'Adapters\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/App/Adapters',
+        ),
     );
 
     public static $classMap = array (

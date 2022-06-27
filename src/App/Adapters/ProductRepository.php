@@ -1,26 +1,27 @@
 <?php 
-    namespace App\Adapters;
+    namespace Adapters;
 
-    use App\Repository\ProductRepoInterface;
-    use App\Entities\Product;
+    use \Repository\ProductRepoInterface;
+    use \Entities\Product;
 
     class ProductRepository implements ProductRepoInterface {
         private $db;
 
-        public function __construct(getConnection $db) {
-            $this->db = $db;
+        public function __construct() {
+            $this->db = new \Dependencies\Database;
+            $this->db = $this->db->connect();
         } 
 
         public function add(Product $product):void {
-            $query = 'INSERT INTO products sku = :sku, name = :name, price = :price, description = :description, quantity = :quantity';
+            $query = 'INSERT INTO products (sku, name, price, description, quantity) VALUES (:sku, :name, :price, :description, :quantity)';
             $stmt = $this->db->prepare($query);
 
-            $stmt->bindParam(':sku', $product->getSku());
-            $stmt->bindParam(':name', $product->getName());
-            $stmt->bindParam(':price', $product->getPrice());
-            $stmt->bindParam(':description', $product->getDescription());
-            $stmt->bindParam(':quantity', $product->getQuantity());
-
+            $stmt->bindValue(':sku', $product->getSku());
+            $stmt->bindValue(':name', $product->getName());
+            $stmt->bindValue(':price', $product->getPrice());
+            $stmt->bindValue(':description', $product->getDescription());
+            $stmt->bindValue(':quantity', $product->getQuantity());
+            
             $stmt->execute();
         }
 
@@ -30,7 +31,7 @@
             $stmt->execute();
             
             foreach($stmt as $item) {
-                return new Product($item['sku'],$item['name'],$item['pric'],$item['email']);
+                return new Product($item['sku'], $item['name'], $item['price'], $item['description'], $item['quantity']);
             }
         }
     }

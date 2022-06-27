@@ -1,5 +1,5 @@
 <?php 
-    namespace App\Entities;
+    namespace Entities;
 
     class Category {
         public function __construct(

@@ -1,8 +1,8 @@
 <?php 
-    namespace App\Adapters;
+    namespace Adapters;
 
-    use App\Repository\CategoryRepoInterface;
-    use App\Entities\Category;
+    use Repository\CategoryRepoInterface;
+    use Entities\Category;
 
     class CategoryRepository implements CategoryRepoInterface {
         private $db;

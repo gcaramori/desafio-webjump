@@ -1,7 +1,7 @@
 <?php 
-    namespace App\Repository;
+    namespace Repository;
 
-    use App\Entities\Product;
+    use \Entities\Product;
 
     interface ProductRepoInterface {
         public function add(Product $product):void;

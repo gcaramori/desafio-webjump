@@ -1,10 +1,10 @@
 <?php 
-    namespace App\Controllers;
+    namespace Controllers;
 
     use Pecee\Http\Response;
     use Pecee\Http\Request;
-    use App\Entities\Category;
-    use App\UseCases\CategoryManager;
+    use Entities\Category;
+    use UseCases\CategoryManager;
 
     class CategoryController {
         private $categoryManager;

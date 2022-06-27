@@ -1,14 +1,10 @@
 <?php
-    namespace App\Dependencies;
+    namespace Dependencies;
 
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 
-    interface DBConnectionInterface {
-        public function connect();
-    }
-
-    class MySQLConnection implements DBConnectionInterface {
+    class Database {
         protected $conn;
         private $dbHost;
         private $dbName;
@@ -23,21 +19,14 @@
             $this->dbPass = $_ENV['DB_PASS'];
 
             try {
-                $this->conn = new PDO("mysql:host=" . $this->dbHost . ";dbname=" . $this->dbName, $this->dbUser, $this->dbPass);
+                $this->conn = new \PDO("mysql:host=" . $this->dbHost . ";dbname=" . $this->dbName, $this->dbUser, $this->dbPass);
+                $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             }
             catch(PDOException $exception) {
                 $this->conn = "Database could not be connected: " . $exception->getMessage();
             }
 
             return $this->conn;
-        }
-    }
-
-    class getConnection {
-        private $dbConnection;
-
-        public function __construct(DBConnectionInterface $dbConnection) {
-            $this->dbConnection = $dbConnection;
         }
     }
 ?>

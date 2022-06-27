@@ -1,8 +1,8 @@
 <?php 
-    namespace App\UseCases;
+    namespace UseCases;
 
-    use App\Entities\Category;
-    use App\Repository\CategoryRepoInterface;
+    use Entities\Category;
+    use Repository\CategoryRepoInterface;
 
     class ProductManager {
         private $categoryRepository;

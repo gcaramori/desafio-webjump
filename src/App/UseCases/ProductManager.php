@@ -1,14 +1,13 @@
 <?php 
-    namespace App\UseCases;
+    namespace UseCases;
 
-    use App\Entities\Product;
-    use App\Repository\ProductRepoInterface;
+    use \Entities\Product;
 
     class ProductManager {
         private $productRepository;
 
-        public function __construct(ProductRepoInterface $productRepository) {
-            $this->productRepository = $productRepository;
+        public function __construct() {
+            $this->productRepository = new \Adapters\ProductRepository;
         }
 
         public function add(Product $product):void {

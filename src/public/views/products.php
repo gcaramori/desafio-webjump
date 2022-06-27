@@ -41,7 +41,6 @@
   <main class="content">
     <div class="header-list-page">
       <h1 class="title">Products</h1>
-      <h2><?= $message ?></h2>
       <a href="/products_add" class="btn-action">Add new Product</a>
     </div>
     <table class="data-grid">

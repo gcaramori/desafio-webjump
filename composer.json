@@ -2,7 +2,12 @@
     "name": "webjump/desafio",
     "autoload": {
         "psr-4": {
-            "Webjump\\Desafio\\": "src/"
+            "Entities\\": "src/App/Entities",
+            "Repository\\": "src/App/Repository",
+            "Dependencies\\": "src/App/Dependencies",
+            "Adapters\\": "src/App/Adapters",
+            "Controllers\\": "src/App/Api/Controllers",
+            "UseCases\\": "src/App/UseCases"
         }
     },
     "authors": [
@@ -12,11 +17,13 @@
         }
     ],
     "scripts": {
-        "start" : [
-            "php -S localhost:8000 -t src/public"
-        ]
+        "start": "php -S localhost:8080 -t src/public"
+    },
+    "config": {
+        "process-timeout": 0
     },
     "require": {
-        "pecee/simple-router": "4.3.7.2"
+        "pecee/simple-router": "4.3.7.2",
+        "vlucas/phpdotenv": "^5.4"
     }
 }
