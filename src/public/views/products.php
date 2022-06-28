@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html ⚡>
 <head>
@@ -65,62 +64,44 @@
             <span class="data-grid-cell-content">Actions</span>
         </th>
       </tr>
-      <tr class="data-row">
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">Product 1 Name</span>
-        </td>
-      
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">SKU1</span>
-        </td>
-
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">R$ 19,90</span>
-        </td>
-
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">100</span>
-        </td>
-
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">Category 1 <Br />Category 2</span>
-        </td>
-      
-        <td class="data-grid-td">
-          <div class="actions">
-            <div class="action edit"><span>Edit</span></div>
-            <div class="action delete"><span>Delete</span></div>
-          </div>
-        </td>
-      </tr>
-      <tr class="data-row">
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">Product 2 Name</span>
-        </td>
-      
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">SKU2</span>
-        </td>
-
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">R$ 59,90</span>
-        </td>
-
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">999</span>
-        </td>
-
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">Category 1</span>
-        </td>
-      
-        <td class="data-grid-td">
-          <div class="actions">
-            <div class="action edit"><span>Edit</span></div>
-            <div class="action delete"><span>Delete</span></div>
-          </div>
-        </td>
-      </tr>
+      <?php 
+        if(isset($products) && count($products) > 0) {
+          foreach($products as $value) {
+            echo '
+                <tr class="data-row">
+                  <td class="data-grid-td">
+                    <span class="data-grid-cell-content">'.$value['name'].'</span>
+                  </td>
+                
+                  <td class="data-grid-td">
+                    <span class="data-grid-cell-content">'.$value['sku'].'</span>
+                  </td>
+          
+                  <td class="data-grid-td">
+                    <span class="data-grid-cell-content">'.$value['price'].'</span>
+                  </td>
+          
+                  <td class="data-grid-td">
+                    <span class="data-grid-cell-content">'.$value['quantity'].'</span>
+                  </td>
+          
+                  <td class="data-grid-td">
+                    <span class="data-grid-cell-content">
+                      '.$value['name'].'
+                    </span>
+                  </td>
+                
+                  <td class="data-grid-td">
+                    <div class="actions">
+                      <a href="/products_edit/'.$value['sku'].'" style="margin-right: 15px; cursor: normal;" class="action edit"><span>Edit</span></a>
+                      <a href="/products/delete/'.$value['sku'].'" style="cursor: normal;" class="action delete"><span>Delete</span></a>
+                    </div>
+                  </td>
+              </tr>
+            ';
+          }
+        }
+      ?>
     </table>
   </main>
   <!-- Main Content -->

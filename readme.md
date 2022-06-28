@@ -21,7 +21,7 @@ Não existe certo ou errado, queremos saber como você se sai em situações rea
 - Você deve criar um CRUD que permita cadastrar as seguintes informações:
 	- **Produto**: Nome, SKU (Código), preço, descrição, quantidade e categoria (cada produto pode conter uma ou mais categorias)
 	- **Categoria**: Código e nome.
-- Salvar as informações necessárias em um banc	q	o de dados (relacional ou não), de sua escolha
+- Salvar as informações necessárias em um banco de dados (relacional ou não), de sua escolha
 
 # Opcionais
 - Gerar logs das ações

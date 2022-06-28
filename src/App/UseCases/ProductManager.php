@@ -17,5 +17,17 @@
         public function find(string $sku) {
             return $this->productRepository->find($sku);
         }
+
+        public function findAll() {
+            return $this->productRepository->findAll();
+        }
+
+        public function update(Product $product) {
+            return $this->productRepository->update($product);
+        }
+
+        public function delete(string $sku) {
+            return $this->productRepository->delete($sku);
+        }
     }
 ?>

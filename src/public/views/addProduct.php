@@ -1,3 +1,14 @@
+<?php
+  $title = ($_SERVER['REQUEST_URI'] === '/products_add') ? 'New Product' : 'Update Product';
+  $btnText = ($_SERVER['REQUEST_URI'] === '/products_add') ? 'Save Product' : 'Update Product';
+  $skuInputDisabled = ($_SERVER['REQUEST_URI'] === '/products_add') ? '' : 'readOnly';
+  $productSku = (isset($product) && $product['sku'] !== '') ? $product['sku'] : '';
+  $productName = (isset($product) && $product['name'] !== '') ? $product['name'] : '';
+  $productPrice = (isset($product) && $product['price'] !== '') ? $product['price'] : '';
+  $productDescription = (isset($product) && $product['description'] !== '') ? $product['description'] : '';
+  $productQuantity = (isset($product) && $product['quantity'] !== '') ? $product['quantity'] : '';
+  $formRoute = ($_SERVER['REQUEST_URI'] === '/products_add') ? '/products/add' : '/products/update/'.$productSku;
+?>
 
 <!doctype html>
 <html ⚡>
@@ -39,24 +50,24 @@
 <!-- Header -->
   <!-- Main Content -->
   <main class="content">
-    <h1 class="title new-item">New Product</h1>
+    <h1 class="title new-item"><?= $title ?></h1>
     
-    <form id="productAddForm" method="POST" action="/products/add">
+    <form id="productForm" method="POST" action="<?= $formRoute ?>">
       <div class="input-field">
         <label for="sku" class="label">Product SKU</label>
-        <input type="text" name="sku" id="sku" class="input-text" required /> 
+        <input type="text" value="<?= $productSku ?>" name="sku" id="sku" class="input-text" required <?= $skuInputDisabled ?>/> 
       </div>
       <div class="input-field">
         <label for="name" class="label">Product Name</label>
-        <input type="text" name="name" id="name" class="input-text" required /> 
+        <input type="text" value="<?= $productName ?>" name="name" id="name" class="input-text" required /> 
       </div>
       <div class="input-field">
         <label for="price" class="label">Price</label>
-        <input type="text" name="price" id="price" class="input-text" required /> 
+        <input type="text" value="<?= $productPrice ?>" name="price" id="price" class="input-text" required /> 
       </div>
       <div class="input-field">
         <label for="quantity" class="label">Quantity</label>
-        <input type="text" name="quantity" id="quantity" class="input-text" required /> 
+        <input type="text" value="<?= $productQuantity ?>" name="quantity" id="quantity" class="input-text" required /> 
       </div>
       <div class="input-field">
         <label for="category" class="label">Categories</label>
@@ -69,11 +80,13 @@
       </div>
       <div class="input-field">
         <label for="description" class="label">Description</label>
-        <textarea id="description" name="description" class="input-text" required></textarea>
+        <textarea id="description" name="description" class="input-text" required>
+          <?= $productDescription ?>
+        </textarea>
       </div>
       <div class="actions-form">
         <a href="/products" class="action back">Back</a>
-        <input class="btn-submit btn-action" type="submit" value="Save Product" />
+        <input class="btn-submit btn-action" type="submit" value="<?= $btnText ?>" />
       </div>
     </form>
   </main>
