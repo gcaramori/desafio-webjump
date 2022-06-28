@@ -1,3 +1,11 @@
+<?php
+  $title = ($_SERVER['REQUEST_URI'] === '/categories_add') ? 'New Category' : 'Update Category';
+  $btnText = ($_SERVER['REQUEST_URI'] === '/categories_add') ? 'Save Category' : 'Update Category'; 
+  $codeInputDisabled = ($_SERVER['REQUEST_URI'] === '/categories_add') ? '' : 'readOnly';
+  $categoryCode = (isset($category) && $category['code'] !== '') ? $category['code'] : '';
+  $categoryName = (isset($category) && $category['name'] !== '') ? $category['name'] : '';
+  $formRoute = ($_SERVER['REQUEST_URI'] === '/categories_add') ? '/categories/add' : '/categories/update/'.$categoryCode;
+?>
 
 <!doctype html>
 <html ⚡>
@@ -23,7 +31,7 @@
   <div>
     <ul>
       <li><a href="/categories" class="link-menu">Categorias</a></li>
-      <li><a href="/products" class="link-menu">Produtos</a></li>
+      <li><a href="/categories" class="link-menu">Produtos</a></li>
     </ul>
   </div>
 </amp-sidebar>
@@ -39,22 +47,22 @@
 <!-- Header -->
   <!-- Main Content -->
   <main class="content">
-    <h1 class="title new-item">New Category</h1>
+    <h1 class="title new-item"><?= $title ?></h1>
     
-    <form>
+    <form id="categoryForm" method="POST" action="<?= $formRoute ?>">
       <div class="input-field">
         <label for="category-name" class="label">Category Name</label>
-        <input type="text" id="category-name" class="input-text" />
+        <input type="text" name="category-name" value="<?= $categoryName ?>" id="category-name" class="input-text" />
         
       </div>
       <div class="input-field">
         <label for="category-code" class="label">Category Code</label>
-        <input type="text" id="category-code" class="input-text" />
+        <input type="text" name="category-code" value="<?= $categoryCode ?>" id="category-code" class="input-text"  <?= $codeInputDisabled?>/>
         
       </div>
       <div class="actions-form">
         <a href="/categories" class="action back">Back</a>
-        <input class="btn-submit btn-action"  type="submit" value="Save" />
+        <input class="btn-submit btn-action"  type="submit" value="<?= $btnText ?>" />
       </div>
     </form>
   </main>

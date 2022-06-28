@@ -71,11 +71,25 @@
       </div>
       <div class="input-field">
         <label for="category" class="label">Categories</label>
-        <select multiple name="category" id="category" class="input-text" required>
-          <option>Category 1</option>
-          <option>Category 2</option>
-          <option>Category 3</option>
-          <option>Category 4</option>
+        <select multiple name="category[]" id="category" class="input-text" required>
+          <?php 
+            if(isset($categories) && count($categories) > 0) {
+              if($_SERVER['REQUEST_URI'] === '/products_add') {
+                foreach($categories as $category) {
+                  echo '
+                    <option value="'.$category['code'].'">'.$category['name'].'</option>
+                  ';
+                }
+              }
+              else {
+                foreach($categories as $value) {
+                  echo '
+                    <option value="'.$category['code'].'">'.$category['name'].'</option>
+                  ';
+                }
+              }
+            } 
+          ?>
         </select>
       </div>
       <div class="input-field">

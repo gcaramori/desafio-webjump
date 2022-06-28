@@ -6,6 +6,7 @@
             protected string $sku,
             protected string $name,
             protected float $price,
+            protected string $categories,
             protected string $description,
             protected int $quantity
         ) {}
@@ -20,6 +21,10 @@
         
         public function getPrice() {
             return $this->price;
+        }
+
+        public function getCategories() {
+            return $this->categories;
         }
 
         public function getDescription() {

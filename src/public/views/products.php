@@ -66,35 +66,34 @@
       </tr>
       <?php 
         if(isset($products) && count($products) > 0) {
-          foreach($products as $value) {
+          foreach($products as $product) {
             echo '
                 <tr class="data-row">
                   <td class="data-grid-td">
-                    <span class="data-grid-cell-content">'.$value['name'].'</span>
+                    <span class="data-grid-cell-content">'.$product['name'].'</span>
                   </td>
                 
                   <td class="data-grid-td">
-                    <span class="data-grid-cell-content">'.$value['sku'].'</span>
+                    <span class="data-grid-cell-content">'.$product['sku'].'</span>
                   </td>
           
                   <td class="data-grid-td">
-                    <span class="data-grid-cell-content">'.$value['price'].'</span>
+                    <span class="data-grid-cell-content">'.$product['price'].'</span>
                   </td>
           
                   <td class="data-grid-td">
-                    <span class="data-grid-cell-content">'.$value['quantity'].'</span>
+                    <span class="data-grid-cell-content">'.$product['quantity'].'</span>
                   </td>
           
                   <td class="data-grid-td">
                     <span class="data-grid-cell-content">
-                      '.$value['name'].'
+                      '.$product['category'].'
                     </span>
                   </td>
-                
                   <td class="data-grid-td">
                     <div class="actions">
-                      <a href="/products_edit/'.$value['sku'].'" style="margin-right: 15px; cursor: normal;" class="action edit"><span>Edit</span></a>
-                      <a href="/products/delete/'.$value['sku'].'" style="cursor: normal;" class="action delete"><span>Delete</span></a>
+                      <a href="/products_edit/'.$product['sku'].'" style="margin-right: 15px; cursor: normal;" class="action edit"><span>Edit</span></a>
+                      <a href="/products/delete/'.$product['sku'].'" style="cursor: normal;" class="action delete"><span>Delete</span></a>
                     </div>
                   </td>
               </tr>

@@ -1,22 +1,33 @@
 <?php 
     namespace UseCases;
 
-    use Entities\Category;
-    use Repository\CategoryRepoInterface;
+    use \Entities\Category;
 
-    class ProductManager {
+    class CategoryManager {
         private $categoryRepository;
 
-        public function __construct(CategoryRepoInterface $categoryRepository) {
-            $this->categoryRepository = $categoryRepository;
+        public function __construct() {
+            $this->categoryRepository = new \Adapters\CategoryRepository;
         }
 
-        public function add(Category $category):void {
-            $this->categoryRepository->add($category);
+        public function add(Category $category) {
+            return $this->categoryRepository->add($category);
         }
         
-        public function find(string $code):Category {
-            $this->categoryRepository->find($code);
+        public function find(string $code) {
+            return $this->categoryRepository->find($code);
+        }
+
+        public function findAll() {
+            return $this->categoryRepository->findAll();
+        }
+
+        public function update(Category $category) {
+            return $this->categoryRepository->update($category);
+        }
+
+        public function delete(string $code) {
+            return $this->categoryRepository->delete($code);
         }
     }
 ?>

@@ -1,31 +1,99 @@
 <?php 
     namespace Controllers;
 
-    use Pecee\Http\Response;
-    use Pecee\Http\Request;
-    use Entities\Category;
-    use UseCases\CategoryManager;
+    use \Entities\Category;
+    use \UseCases\CategoryManager;
 
     class CategoryController {
         private $categoryManager;
 
-        public function __construct(CategoryManager $categoryManager) {
-            $this->categoryManager = $categoryManager;
+        public function __construct() {
+            $this->categoryManager = new \UseCases\CategoryManager;
         }
 
-        public function add(Request $request, Response $response) {
-            $json = $request->getBody();
-            $obj = json_decode($json, true);
+        public function add() { 
+            $formData = input()->all([
+                'category-code',
+                'category-name'
+            ]);
             
-            $category = new Category($obj->code, $obj->name);
-            $this->categoryManager->add($category);
+            $category = new \Entities\Category($formData['category-code'], $formData['category-name']);
+            $result = $this->categoryManager->add($category);
             
-            return $response;
+            if($result === true) {
+                echo '
+                    <script>
+                        alert("Categoria inserida com sucesso!");
+                        window.location = "/categories";
+                    </script>
+                ';
+            }
+            else {
+                echo '
+                    <script>
+                        alert("Erro ao inserir categoria!");
+                        window.location = "/categories_add";
+                    </script>
+                ';
+            }   
         }
 
-        public function find(Response $response, $code) {
+        public function find($code) {
             $category = $this->categoryManager->find($code);
-            return $response;
+            
+            return json_encode([
+                'code' => $category->getCode(),
+                'name' => $category->getName()
+            ]);
+        }
+
+        public function findAll() {
+            $categories = $this->categoryManager->findAll();
+
+            return $categories;
+        }
+
+        public function update($code) {
+            $category = new \Entities\Category($code, input('category-name'));
+            $result = $this->categoryManager->update($category);
+            
+            if($result === true) {
+                echo '
+                    <script>
+                        alert("Categoria atualizada com sucesso!");
+                        window.location = "/categories";
+                    </script>
+                ';
+            }
+            else {
+                echo '
+                    <script>
+                        alert("Erro ao atualizar categoria!");
+                        window.location = "/categories";
+                    </script>
+                ';
+            }
+        }
+        
+        public function delete($code) {
+            $result = $this->categoryManager->delete($code);
+
+            if($result === true) {
+                echo '
+                    <script>
+                        alert("Categoria deletada com sucesso!");
+                        window.location = "/categories";
+                    </script>
+                ';
+            }
+            else {
+                echo '
+                    <script>
+                        alert("Erro ao deletar categoria!");
+                        window.location = "/categories";
+                    </script>
+                ';
+            }
         }
     }
 ?>

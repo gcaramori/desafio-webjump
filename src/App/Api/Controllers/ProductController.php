@@ -18,8 +18,10 @@
                     'category',
                     'quantity'
                 ]);
+                
+                if(is_array($formData['category'])) $formData['category'] = implode(',', $formData['category']);
 
-                $product = new \Entities\Product($formData['sku'], $formData['name'], $formData['price'], $formData['description'], $formData['quantity']);
+                $product = new \Entities\Product($formData['sku'], $formData['name'], $formData['price'], $formData['category'], $formData['description'], $formData['quantity']);
                 $result = $this->productManager->add($product);
                 
                 if($result === true) {

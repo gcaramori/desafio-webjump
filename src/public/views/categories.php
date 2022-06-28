@@ -55,38 +55,30 @@
             <span class="data-grid-cell-content">Actions</span>
         </th>
       </tr>
-      <tr class="data-row">
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">Category 1 Name</span>
-        </td>
-      
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">Category 1 Code</span>
-        </td>
-      
-        <td class="data-grid-td">
-          <div class="actions">
-            <div class="action edit"><span>Edit</span></div>
-            <div class="action delete"><span>Delete</span></div>
-          </div>
-        </td>
-      </tr>
-      <tr class="data-row">
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">Category 2 Name</span>
-        </td>
-      
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">Category 2 Code</span>
-        </td>
-      
-        <td class="data-grid-td">
-          <div class="actions">
-            <div class="action edit"><span>Edit</span></div>
-            <div class="action delete"><span>Delete</span></div>
-          </div>
-        </td>
-      </tr>
+      <?php 
+        if(isset($categories) && count($categories) > 0) {
+          foreach($categories as $category) {
+            echo '
+                <tr class="data-row">
+                  <td class="data-grid-td">
+                    <span class="data-grid-cell-content">'.$category['name'].'</span>
+                  </td>
+                
+                  <td class="data-grid-td">
+                    <span class="data-grid-cell-content">'.$category['code'].'</span>
+                  </td>
+
+                  <td class="data-grid-td">
+                    <div class="actions">
+                      <a href="/categories_edit/'.$category['code'].'" style="margin-right: 15px; cursor: normal;" class="action edit"><span>Edit</span></a>
+                      <a href="/categories/delete/'.$category['code'].'" style="cursor: normal;" class="action delete"><span>Delete</span></a>
+                    </div>
+                  </td>
+              </tr>
+            ';
+          }
+        }
+      ?>
     </table>
   </main>
   <!-- Main Content -->
